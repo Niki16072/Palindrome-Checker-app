@@ -10,7 +10,7 @@ public class PalindromeApp {
         Stack<Character> stack = new Stack<>();
         Queue<Character> queue = new LinkedList<>();
 
-        System.out.print("Enter a string: ");
+        System.out.print("Enter a string:  ");
         String input = scanner.nextLine();
 
         for (int i = 0; i < input.length(); i++) {
