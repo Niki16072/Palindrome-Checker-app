@@ -1,39 +1,40 @@
 import java.util.SortedMap;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
 
 public class PalindromeApp {
-
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Input text: ");
-        String text = sc.nextLine().trim().toLowerCase();
-
+        Scanner scanner = new Scanner(System.in);
         Stack<Character> stack = new Stack<>();
+        Queue<Character> queue = new LinkedList<>();
 
-        // Push characters into stack
-        for (int i = 0; i < text.length(); i++) {
-            stack.push(text.charAt(i));
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        for (int i = 0; i < input.length(); i++) {
+            char ch = input.charAt(i);
+            stack.push(ch);
+            queue.add(ch);
         }
 
         boolean isPalindrome = true;
 
-        // Pop and compare
-        for (int i = 0; i < text.length(); i++) {
-            char popped = stack.pop();
-
-            if (text.charAt(i) != popped) {
+        while (!stack.isEmpty()) {
+            if (!stack.pop().equals(queue.remove())) {
                 isPalindrome = false;
                 break;
             }
         }
 
         if (isPalindrome) {
-            System.out.println("Decision: It is a Palindrome.");
+            System.out.println("The given string is a palindrome.");
         } else {
-            System.out.println("Decision: It is NOT a Palindrome.");
+            System.out.println("The given string is not a palindrome.");
         }
+
+        scanner.close();
     }
 }
+
